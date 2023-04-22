@@ -1,0 +1,65 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1>Registro de Usuarios</h1>
+<form>
+<div class="form-group row">
+<div class="form-group row">
+    <div class="col-sm-4">
+        <label>Nombre Usuario :</label> @Html.TextBox("txtUserName", "", new {@class="form-control"})
+    </div>
+</div>
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label>Contraseña :</label>
+            @Html.Password("Contrasena","", new{@class="form-control"})
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <label>Genero :</label>
+        @Html.RadioButton("Genero", "Masculino", true, new{id="masculino"})
+
+        @Html.RadioButton("Genero", "Femenino", false, new{id="femenino"})
+
+        <label>Email :</label>
+        @Html.TextArea("Direccion", "Ingrese su direccion",new{@class="form-control", id= "idDireccion"})
+
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label>Pasatiempos :</label>
+            <label>Bailar</label>   @Html.CheckBox("Bailando")
+            <label>Correr</label> @Html.CheckBox("Correr")
+            <label>Escalar</label>  @Html.CheckBox("Escalar")
+            <label>Peliculas</label> @Html.CheckBox("Peliculas")
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-4">
+            <label>Curso :</label>
+            @{
+                IEnumerable<string> strList = new List<string> { "POO", "TW", "MAT3", "FIS1" };
+            }
+            @Html.DropDownList("ddlCurso", new SelectList(strList,
+            strList.FirstOrDefault()), "--Seleccionar curso ----" )
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label>Conocimientos :</label>
+    </div>
+    <div>
+        @Html.ListBox("Seleccionar habilidades", new List<SelectListItem>{new SelectListItem {Text = "C #", Value = "1"},
+        new SelectListItem {Text = "ASP.NET", Value = "2"},
+        new SelectListItem {Text = "ASP.NET Core", Value = "3"},
+        new SelectListItem {Text = "Azure", Value = "4"}
+        })
+    </div>
+
+</div>
+</form>
